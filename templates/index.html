@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Koto Taka?</title>
+	<!-- <link rel="stylesheet" type="text/css" href="/home/mehedi/github/inventory/flask-practice/project5/static/css/index.css"> -->
+	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+</head>
+<body>
+
+	<div id="body">
+		<div id="head">
+			<h1>Bangladeshi Banknote Recognizer</h1>
+		</div>
+		
+		<form action="/" method="POST" enctype="multipart/form-data">
+			<div id="input"><input id="input2" type="file" name="input"></div>
+			<div id="btn"><input id="btn2" type="submit" value="Upload"></div>
+		</form>
+
+		{% if img_path %}
+			<div id="image">
+				<!-- <p style="color: red;">path is {{img_path}}</p> -->
+				<img src="{{url_for('static', filename='uploaded_images/'+img_path)}}" width="350px">
+			</div>
+		{% endif %}
+
+		{% if prediction %}
+			<div id="result">
+				<!-- <p>dbug== {{dbg}}</p> -->
+				<p>This is a banknote of {{prediction}} taka.</p>
+			</div>
+		{% endif %}
+	</div>
+
+
+</body>
+</html>
