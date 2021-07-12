@@ -10,7 +10,7 @@ app=Flask(__name__)
 def home():
 	return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def predict():
 	img=request.files['input']
 	directory=os.path.join(app.root_path,'static/uploaded_images')
