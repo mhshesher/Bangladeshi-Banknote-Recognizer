@@ -13,11 +13,11 @@ def home():
 @app.route('/', methods=['POST'])
 def predict():
 	img=request.files['input']
-	directory='/home/mehedi/test/project5_clean/static/uploaded_images/'
+	directory=os.path.join(app.root_path,'static/uploaded_images')
 	files=os.listdir(directory)
 	count=len(files)
 	filename=str(count)+'_'+img.filename
-	path=directory+filename
+	path=os.path.join(directory,filename)
 	img.save(path)
 
 	img=cv.imread(path)
@@ -25,7 +25,7 @@ def predict():
 	feature=img_res.reshape(1,img_res.shape[0],img_res.shape[1],img_res.shape[2])
 	feature_norm=feature/255.0
 
-	model_path='/home/mehedi/test/project5_clean/cnn_model.h5'
+	model_path=os.path.join(app.root_path,'cnn_model.h5')
 	cnn=load_model(model_path)
 	results=cnn.predict(feature_norm)
 	y_hat=np.argmax(results)
