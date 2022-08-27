@@ -72,7 +72,7 @@ packaging==21.3
 pandas==1.4.1
 paramiko==2.6.0
 pexpect==4.6.0
-Pillow==7.0.0
+Pillow>=9.0.1
 platformdirs==2.5.2
 pooch==1.6.0
 protobuf==3.19.4
